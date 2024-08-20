@@ -197,3 +197,36 @@ firstGameContainer.appendChild(firstGameElement);
 const secondGameElement = document.createElement('h3');
 secondGameElement.textContent = secondGame.name;
 secondGameContainer.appendChild(secondGameElement);
+
+
+//add a serach funtionality to the page
+const search = document.getElementById("search");
+const searchForm = document.getElementById("searchForm")
+function searching() {
+    deleteChildElements(gamesContainer);
+    const index = search.value.trim();
+    const searchGames = (searchTerm) => {
+    return GAMES_JSON.filter(game => game.name.toLowerCase().includes(searchTerm.toLowerCase()));}
+    // add all games from the JSON data to the DOM
+ 
+    const searchedGames = searchGames(index);
+    if (searchedGames.length !== 0) {
+        addGamesToPage(searchedGames);
+    } else {
+      const unregistered = document.createElement('p');
+      unregistered.innerHTML = `This game is not registered "${search.value}"`; 
+      gamesContainer.appendChild(unregistered) 
+    }
+    
+    ;
+    
+    
+
+}
+//Searches on Submission
+searchForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    searching()});
+
+//Automatically searches on input
+search.addEventListener("input", searchOnly)

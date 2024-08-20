@@ -79,3 +79,8 @@ button {
     margin: 1%;
     border-radius: 7px;
 }
+
+#searchBtn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(37, 21, 2, 0.726);
+}
